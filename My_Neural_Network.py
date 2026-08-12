@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from keras.datasets import mnist
 
+#Important : In my file all np.ndarrays are dim : (n_sample_feaures by batch_size)
+
 #################################
 #MY_DATA : Import and preprocessing
 #################################
@@ -607,41 +609,13 @@ def main():
     X_micro = X_train[:,:60000]
     Y_micro = Y_train[:,:60000]
     layers1 = [Linear(784,128),
-               Dropout(0.3),
               Activation(ReLU),
               Linear(128,256),
-               Dropout(0.3),
               Activation(ReLU),
               Linear(256,10),
               Activation(softmax)]
     My_Net = Net(layers1,"NLL",metrics = ["per_class_accuracy","accuracy"],plot = True,lr_rate = 0.001)
     My_Net.train(X_micro,Y_micro,epoc = 10,X_val = X_val,Y_val = Y_val)
     print(My_Net.evaluate(X_val,Y_val))
-    # model = models.Sequential([
-    #     layers.Dense(128,input_shape = (784,)),
-    #     layers.BatchNormalization(),
-    #     layers.Activation("relu"),
-    #     layers.Dense(256),
-    #     layers.BatchNormalization(),
-    #     layers.Activation("relu"),
-    #     layers.Dense(10,activation = "softmax"),
-    # ])
-    # custom_sgd = optimizers.SGD(learning_rate=0.002)
-    # model.compile(
-    #     optimizer=custom_sgd,  # lub tf.keras.optimizers.SGD(learning_rate=0.01)
-    #     loss='categorical_crossentropy',
-    #     metrics=['accuracy']
-    # )
-    # history = model.fit(
-    #     X_micro.T, Y_micro.T,
-    #     epochs=20,  # Liczba epok
-    #     batch_size=32,  # Rozmiar batcha
-    #     validation_data=(X_val.T,Y_val.T)  # 20% danych na walidację
-    # )
 if __name__ == "__main__":
     main()
-'''
-Uwaga : U mnie w kodzie jest tak, że dLossdA i dLossdZ mają wymiary : 
-Liczba cech poszczególnego Z/A na liczba próbek w kodzie
-Mój model działa i daje takie wyniki jak kerasowa sieć neuronowa
-'''
