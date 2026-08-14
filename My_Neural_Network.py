@@ -263,8 +263,8 @@ class Batch_Norm(Module):
     Represents a Batch Normalization layer, which normalizes inputs to stabilize and speed up training.
 
     Attributes:
-        G: Learned scaling parameter ($\gamma$).
-        B: Learned shifting parameter ($\beta$).
+        G: Learned scaling parameter
+        B: Learned shifting parameter 
         running_mean: Moving average of the mean, used during inference.
         running_var: Moving average of the variance, used during inference.
         K: Batch size stored from the forward pass.
