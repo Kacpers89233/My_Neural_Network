@@ -1,4 +1,4 @@
-# My Neural Network Framework from Scratch
+# My Neural Network Framework from Scratch on the MNIST dataset
 
 A modular deep learning framework built entirely from scratch using **Python** and **NumPy**, designed to replicate the core mechanisms of modern neural networks without relying on high-level frameworks like TensorFlow or PyTorch.
 
